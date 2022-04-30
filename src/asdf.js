@@ -1,18 +1,9 @@
-function countCats(matrix) {
-  let result = 0;
-  for (let j = 0; j < matrix.length; j++) {
-    for (let i = 0; i < matrix[j].length; i++) {
-      if (matrix[j][i] == "^^") {
-        result++;
-      }
-    }
-  }
-  return result;
+function getCommonCharacterCount(s1, s2) {
+  let stringRegex = s2.split("").join("|");
+  let regex = new RegExp(stringRegex, "gi");
+
+  return s1.match(regex).length;
 }
-console.log(
-  countCats([
-    [0, 1, "^^"],
-    [0, "^^", 2],
-    ["^^", 1, 2],
-  ])
-);
+
+console.log(getCommonCharacterCount("aabcc", "adcaa"));
+
