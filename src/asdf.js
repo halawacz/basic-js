@@ -1,16 +1,18 @@
-const MODERN_ACTIVITY = 15;
-const HALF_LIFE_PERIOD = 5730;
-
-function dateSample(sampleActivity) {
-  if (!sampleActivity || Number.isNaN(parseFloat(sampleActivity))) {
-    return false;
+function countCats(matrix) {
+  let result = 0;
+  for (let j = 0; j < matrix.length; j++) {
+    for (let i = 0; i < matrix[j].length; i++) {
+      if (matrix[j][i] == "^^") {
+        result++;
+      }
+    }
   }
-
-  let pastActivity = parseFloat(sampleActivity);
-  return Math.ceil(
-    HALF_LIFE_PERIOD *
-      (Math.log(pastActivity / MODERN_ACTIVITY) / Math.log(0.5))
-  );
+  return result;
 }
-
-console.log(dateSample(3));
+console.log(
+  countCats([
+    [0, 1, "^^"],
+    [0, "^^", 2],
+    ["^^", 1, 2],
+  ])
+);
